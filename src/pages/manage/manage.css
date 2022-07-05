@@ -1,0 +1,35 @@
+.wt__manage_barcode,
+.wt__manage_partNumber,
+.wt__manage_brand,
+.wt__manage_type,
+.wt__manage_amount {
+    padding: 0.5rem 1rem;
+    height: calc(100% + 10rem);
+    width: 300px;
+    border: none;
+    background-color: rgb(201, 201, 201);
+    outline: none;
+    font-size: 1.5rem;
+    letter-spacing: 0.75px;
+    font-family: var(--font-family);
+    border-radius: 8px;
+    margin-top: 8rem;
+    align-items: center;
+    margin: 1rem;
+}
+
+.wt__manage button {
+    padding: 0.5rem 1rem;
+    color: white;
+    background: rgb(168, 3, 3);
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin: 0.5rem;
+}

@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+    --font-family: 'Manrope', sans-serif;
+    --gradient-text: linear-gradient(89.97deg, #f50101 -4.84%, #FFFFFF 102.67%);
+    --gradient-bar: linear-greadient(103.22deg, #A70000 -13.86%, #FFFFFF 99.55%);
+
+    --color-bg: #121212;
+    --color-footer: #4f000d;
+    --color-blog: #042C54;
+    --color-text: #91AFDD;
+    --color-subtext: #FF8A71;
+}

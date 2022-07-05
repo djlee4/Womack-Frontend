@@ -1,0 +1,74 @@
+.wt__inventory-search {
+    margin: 2rem;
+    align-items: center;
+    display: inline;
+}
+
+.wt__inventory-search_barcode,
+.wt__inventory-search_brand,
+.wt__inventory-search_partNumber {
+    padding: 0.5rem 1rem;
+    height: calc(100% + 10rem);
+    width: 400px;
+    border: none;
+    background-color: rgb(201, 201, 201);
+    outline: none;
+    font-size: 1.5rem;
+    letter-spacing: 0.75px;
+    font-family: var(--font-family);
+    border-radius: 8px;
+    margin-top: 8rem;
+    align-items: center;
+    margin: 1rem;
+}
+
+.wt__inventory-search button {
+    padding: 0.5rem 1rem;
+    color: white;
+    background: rgb(168, 3, 3);
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 1050px) {
+    .wt__inventory-search {
+        display: flex;
+    }
+    
+    .wt__inventory-search_container {
+        display: flex;
+        width: 85%;
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .wt__inventory-search {
+        display: flex;
+    }
+    
+    .wt__inventory-search_container {
+        display: flex;
+        width: 85%;
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .wt__inventory-search {
+        display: flex;
+    }
+    
+    .wt__inventory-search_container {
+        display: flex;
+        width: 85%;
+        margin-top: 10%;
+    }
+}
