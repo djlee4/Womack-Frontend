@@ -1,4 +1,4 @@
-import { Brand } from "../../components/index.js";
+import { Brand } from "../../components";
 import "./mainpage.css";
 
 const MainPage = () => {

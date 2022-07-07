@@ -1,20 +1,28 @@
+import { useState } from "react";
 import "./sign.css";
 
-const Sign = () => {
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const email = (loginForm.email.value;
-    const password = loginForm.password.value;
+export interface UserLogin {
+  email: string;
+  password: string;
+}
 
-    if (email === "user" && password === "web_dev") {
+export const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const valid = validate();
+    if (valid) {
       alert("You have successfully logged in.");
       window.location.reload();
-    } else {
-      loginErrorMsg.style.opacity = 1;
     }
   };
 
-  console.log("here");
+  const validate = () => {
+    return email === "user" && password === "web_dev";
+  };
+
   return (
     <div className="wt__sign">
       <h1>Login</h1>
@@ -27,13 +35,17 @@ const Sign = () => {
       <form className="wt__sign-in">
         <input
           className="wt__sign-in_email"
-          type="text"
+          type="email"
           placeholder="Email"
+          onChange={(item) => setEmail(item.target.value)}
+          value={email}
         ></input>
         <input
           className="wt__sign-in_password"
-          type="text"
+          type="password"
           placeholder="Password"
+          onChange={(item) => setPassword(item.target.value)}
+          value={password}
         ></input>
         <button id="btn5" type="button" onClick={handleLogin}>
           Login
@@ -42,8 +54,3 @@ const Sign = () => {
     </div>
   );
 };
-
-const loginForm = document.getElementById("wt__sign-in") as HTMLElement;
-const loginErrorMsg = document.getElementById("login-error-msg") as HTMLElement;
-
-export default Sign;
