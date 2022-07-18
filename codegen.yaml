@@ -1,12 +1,14 @@
-schema:
-  -http://localhost:3000/graphql
-documents: "src/api/**/*.tsx"
+schema: -http://localhost:5000/graphql
+documents: "src/api/**/*.gql"
 generates:
   ./src/api/generated/generated.ts:
     plugins:
       -typescript:
-      -typescript-operations:
-      -typescript-rtk-query:
+      config:
+      maybeValue: T | null | undefined
+        -typescript-operations:
+          -typescript-rtk-query:
+            importBaseApiFrom: 'src/app/api/baseApi'
+            exportHooks: true
     config:
       fetcher: fetch
-        

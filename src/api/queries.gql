@@ -1,0 +1,47 @@
+query parts {
+  parts {
+    id
+    name
+    barcode
+    quantity
+    description
+    brand {
+      id
+      name
+    }
+    hasCore
+    price
+    category {
+      id
+      name
+    }
+    type {
+      id
+      name
+    }
+  }
+}
+
+mutation createPart($createPartInput: CreatePartInput!) {
+  createPart(createPartInput: $createPartInput) {
+    id
+    name
+    barcode
+    quantity
+    description
+    brand {
+      id
+      name
+    }
+    hasCore
+    price
+    category {
+      id
+      name
+    }
+    type {
+      id
+      name
+    }
+  }
+}
