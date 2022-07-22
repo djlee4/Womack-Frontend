@@ -45,3 +45,27 @@ mutation createPart($createPartInput: CreatePartInput!) {
     }
   }
 }
+
+query findByBarcode($barcode: String!) {
+  findByBarcode(barcode: $barcode) {
+    id
+    name
+    barcode
+    quantity
+    description
+    brand {
+      id
+      name
+    }
+    hasCore
+    price
+    category {
+      id
+      name
+    }
+    type {
+      id
+      name
+    }
+  }
+}

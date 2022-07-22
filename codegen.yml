@@ -9,4 +9,8 @@ generates:
           importBaseApiFrom: "src/api/graph-base-api.ts"
           exportHooks: true
     config:
+      maybeValue: T | undefined
       fetcher: fetch
+      useImplementingTypes: true
+      preResolveTypes: true
+      flattenGeneratedTypes: true

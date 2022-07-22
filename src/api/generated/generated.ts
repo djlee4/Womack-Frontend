@@ -1,7 +1,7 @@
 import { api } from "../graph-base-api";
 
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
+export type Maybe<T> = T | undefined;
+export type InputMaybe<T> = T | undefined;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
@@ -97,8 +97,13 @@ export type PartType = {
 
 export type Query = {
   __typename?: "Query";
+  findByBarcode: Part;
   part: Part;
   parts: Array<Part>;
+};
+
+export type QueryFindByBarcodeArgs = {
+  barcode: Scalars["String"];
 };
 
 export type QueryPartArgs = {
@@ -130,10 +135,12 @@ export type PartsQuery = {
     quantity: number;
     description: string;
     hasCore: boolean;
-    price?: number | null;
+    price?: number | undefined;
     brand: { __typename?: "PartBrand"; id: string; name: string };
-    category?: { __typename?: "PartCategory"; id: string; name: string } | null;
-    type?: { __typename?: "PartType"; id: string; name: string } | null;
+    category?:
+      | { __typename?: "PartCategory"; id: string; name: string }
+      | undefined;
+    type?: { __typename?: "PartType"; id: string; name: string } | undefined;
   }>;
 };
 
@@ -151,10 +158,35 @@ export type CreatePartMutation = {
     quantity: number;
     description: string;
     hasCore: boolean;
-    price?: number | null;
+    price?: number | undefined;
     brand: { __typename?: "PartBrand"; id: string; name: string };
-    category?: { __typename?: "PartCategory"; id: string; name: string } | null;
-    type?: { __typename?: "PartType"; id: string; name: string } | null;
+    category?:
+      | { __typename?: "PartCategory"; id: string; name: string }
+      | undefined;
+    type?: { __typename?: "PartType"; id: string; name: string } | undefined;
+  };
+};
+
+export type FindByBarcodeQueryVariables = Exact<{
+  barcode: Scalars["String"];
+}>;
+
+export type FindByBarcodeQuery = {
+  __typename?: "Query";
+  findByBarcode: {
+    __typename?: "Part";
+    id: string;
+    name: string;
+    barcode: string;
+    quantity: number;
+    description: string;
+    hasCore: boolean;
+    price?: number | undefined;
+    brand: { __typename?: "PartBrand"; id: string; name: string };
+    category?:
+      | { __typename?: "PartCategory"; id: string; name: string }
+      | undefined;
+    type?: { __typename?: "PartType"; id: string; name: string } | undefined;
   };
 };
 
@@ -208,6 +240,31 @@ export const CreatePartDocument = `
   }
 }
     `;
+export const FindByBarcodeDocument = `
+    query findByBarcode($barcode: String!) {
+  findByBarcode(barcode: $barcode) {
+    id
+    name
+    barcode
+    quantity
+    description
+    brand {
+      id
+      name
+    }
+    hasCore
+    price
+    category {
+      id
+      name
+    }
+    type {
+      id
+      name
+    }
+  }
+}
+    `;
 
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -219,9 +276,19 @@ const injectedRtkApi = api.injectEndpoints({
         query: (variables) => ({ document: CreatePartDocument, variables }),
       }
     ),
+    findByBarcode: build.query<FindByBarcodeQuery, FindByBarcodeQueryVariables>(
+      {
+        query: (variables) => ({ document: FindByBarcodeDocument, variables }),
+      }
+    ),
   }),
 });
 
 export { injectedRtkApi as api };
-export const { usePartsQuery, useLazyPartsQuery, useCreatePartMutation } =
-  injectedRtkApi;
+export const {
+  usePartsQuery,
+  useLazyPartsQuery,
+  useCreatePartMutation,
+  useFindByBarcodeQuery,
+  useLazyFindByBarcodeQuery,
+} = injectedRtkApi;
